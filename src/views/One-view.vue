@@ -55,6 +55,7 @@ export default {
     return {
       canShow: false,
       needPreview: false,
+			
       //   previewSrc: previewSrc,
       desc: '插画 | ',
       prev: '-1',
