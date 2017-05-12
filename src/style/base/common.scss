@@ -1,0 +1,25 @@
+//网易红
+$skin-red: #B72712;
+
+
+//字体行，高，颜色
+@mixin font-lh-col($fs, $h, $lh, $col: #000){
+	font-size: $fs;
+	height: $h;
+	line-height: $lh;
+	color: $col;
+}
+//黑体
+@mixin heiti{
+	font-family: '黑体';
+};
+//宽度居中
+@mixin width_center {
+	width: 100%;
+	text-align: center;
+}
+//阴影
+@mixin box-shadow($sp:0px, $cz:0px, $bl:0px, $col:#000){
+	-webkit-box-shadow: $sp $cz $bl $col;
+	box-shadow: $sp $cz $bl $col;
+}
