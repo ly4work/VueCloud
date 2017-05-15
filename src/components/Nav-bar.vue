@@ -17,7 +17,7 @@
 // import store from '../store/store.js';
 export default {
 	name: 'Nav-bar',
-	data(){
+	data() {
 		return {
 			tabs: [
 				{
@@ -45,32 +45,47 @@ export default {
 			this.$router.push(this.tabs[index].routerPath)
 		}
 	},
-	mounted(){
+	mounted() {
 
 	}
 }
 </script>
 
 <style lang="scss">
-	@import '../style/base/common.scss';
-	.tabs {
-		display: flex;
-		width: 100%;
-        @include font-lh-col(1.4rem, 3.8rem, 3.8rem, $skin-red)
-        @include box-shadow(0px, 1px ,8px, #ccc);
-		.tab {
-			flex: 1;
-			text-align: center;
-			font-weight: normal;
-            color: $skin-red;
-			background: #fff;
-			padding: 0 2rem;
-			.tab-link {
-				@include width_center;
+@import '../style/base/common.scss';
+.tabs {
+	display: flex;
+	width: 100%;
+	@include font-lh-col(1.4rem, 3.8rem, 3.8rem, $skin-red);
+	@include box-shadow(0px, 1px, 8px, #ccc);
+	.tab {
+		flex: 1;
+		text-align: center;
+		font-weight: normal;
+		color: $skin-red;
+		background: #fff;
+		padding: 0 2rem;
+		.tab-link {
+			height: 3.8rem;
+			@include width_center;
+			position: relative;
+			&:after {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				z-index: 9999;
+				width: 100%;
+				height: 2px;
+				display: block;
+				transition: 0.3s ease-out;
+				transform: scaleX(0);
 			}
 		}
-		.on {
-			border-bottom: 2px solid $skin-red;
+		.on::after {
+			background: $skin-red;
+			transform: scaleX(1);
 		}
 	}
+}
 </style>
