@@ -1,4 +1,3 @@
-
 import Vue from 'vue';
 import App from './App';
 import router from './router/index.js';
@@ -12,17 +11,22 @@ Vue.prototype.axios = axios;
 Vue.config.productionTip = false;
 
 import store from './store/store.js';
-let _extend  = function($tar, $sour){
-    for(let k in $sour){
+let _extend = function($tar, $sour) {
+    for (let k in $sour) {
         $tar[k] = $sour[k];
     }
 }
 Vue.prototype._extendObj = _extend;
-new Vue({
-  el: '#app',
-  router,
-  store,
-  template: '<App/>',
-  components: { App },
-})
+var vm = new Vue({
+    el: '#app',
+    data: {},
+    router,
+    store,
+    template: '<App/>',
+    components: { App },
+});
+// console.log(vm.$data.GLOBAL_TABINDEX)
+// vm.$watch(GLOBAL_TABINDEX, function(v, oldv) {
+//     console.log(v);
+// });
 // console.log("%c Cloud created by nardo.li@2017 ","color:#B72712");

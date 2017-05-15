@@ -1,6 +1,6 @@
 <template lang="html">
 	<transition name="oneRouter">
-		<section class="one-view" @click="makeFooterShow()" @touchstart="">
+		<section class="one-view" @click="makeFooterShow()">
 			<div class="content">
 				<header :id="viewInfo.id">
 					<h3 class="h-time">{{viewInfo.postDate}}</h3>
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import previewSrc from './../assets/preview.png';
+// import previewSrc from './../assets/preview.png';
 
 export default {
 	name: 'One',
@@ -40,16 +40,20 @@ export default {
 		this.$store.commit({
 			type: 'checkLoading',
 			need: true
-		})
+		});
+		window.scrollTo(0, 0);
 	},
 	created() {
 		this.getOne();
 	},
 	mounted() {
-		this.$store.commit({
-			type: 'checkTabLink',
-			index: 2
-		})
+		//当前视图渲染过一次后记住当前tab索引，刷新时显示该路由
+		if (!this.$store.state.isClickChecking) {
+			this.$store.commit({
+				type: 'checkTabLink',
+				index: 2
+			})
+		}
 	},
 	data() {
 		return {
@@ -235,7 +239,7 @@ export default {
 		}
 	}
 	.footer {
-		position: relative;
+		position: fixed;
 		height: 5rem;
 		margin-top: 2rem;
 		.fixed-box {

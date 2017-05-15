@@ -37,8 +37,15 @@ export default {
       OneView,
       Loading,
   },
-  mounted(){
+  data(){
+    return {
+        data: store.state.checkTabLink
+    }
+  },
+  methods: {
 
+  },
+  mounted(){
   }
 }
 </script>
@@ -55,6 +62,7 @@ export default {
         position: relative;
         width: 100%;
         height: 7.8rem;
+        z-index: 9999;
         .header-fixed {
             position: fixed;
             width: 100%;

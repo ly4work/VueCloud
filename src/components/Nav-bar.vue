@@ -34,20 +34,43 @@ export default {
 				}
 			],
 			isActive: false,
+			GLOBAL_CONFIG: this.$store.state.tabIndex
 		}
 	},
 	methods: {
 		checkTab(index) {
-			this.$store.commit({
-				type: 'checkTabLink',
-				index: index
-			})
-			this.$router.push(this.tabs[index].routerPath)
+			if (this.$store.state.tabIndex != index) {
+				this.$store.commit({
+					type: 'checkTabLink',
+					index: index
+				});
+				this.$store.commit({
+					type: 'isClickChecking',
+					isClickChecking: true
+				})
+				this.$router.push(this.tabs[index].routerPath)
+			}
+
+		},
+		queryTabIndex(val, oldval) {
+			console.log(val)
+			if (val != oldval) {
+				alert(1);
+				window.scrollTo(0, 0);
+			}
 		}
 	},
 	mounted() {
 
-	}
+	},
+	watch: {
+		GLOBAL_TABINDEX: {
+			deep: true,
+			handler: function (val, old) {
+				console.log(val);
+			}
+		}
+	},
 }
 </script>
 
@@ -56,6 +79,7 @@ export default {
 .tabs {
 	display: flex;
 	width: 100%;
+	z-index: 99999;
 	@include font-lh-col(1.4rem, 3.8rem, 3.8rem, $skin-red);
 	@include box-shadow(0px, 1px, 8px, #ccc);
 	.tab {
