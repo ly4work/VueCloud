@@ -109,10 +109,11 @@ export default {
 						});
 
 						let imgBox = document.querySelector('#img');
-						imgBox.onload = function () {
-							this.commitCheckState(true, true, false);
-						}.bind(this);
-
+						if (imgBox) {
+							imgBox.onload = function () {
+								this.commitCheckState(true, true, false);
+							}.bind(this);
+						}
 						this.$store.dispatch({
 							type: 'checkOneFooter',
 							bool: false
@@ -120,9 +121,11 @@ export default {
 						// this.isFooterShow = false;
 
 					}).catch(err => {
-						imgBox.onload = function () {
-							this.commitCheckState(true, true, false);
-						}.bind(this);
+						if (imgBox) {
+							imgBox.onload = function () {
+								this.commitCheckState(true, true, false);
+							}.bind(this);
+						}
 						this.isFooterShow = false;
 					})
 			}

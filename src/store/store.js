@@ -15,9 +15,13 @@
             oneViewInfo: {},
             onePage: 0,
             isFooterShow: true,
-            isClickChecking: false
+            isClickChecking: false,
+            audioList: [
+
+            ]
         },
         mutations: {
+            //检查是否为点击tab更换路由
             [types.IS_CLICK_CHECKING](state, info) {
                 state.isClickChecking = info.isClickChecking
             },
@@ -50,7 +54,10 @@
                         state.isFooterShow = info.bool;
                     }, 1000)
                 }
-
+            },
+            //将本地播放列表存储在store中
+            [types.STORAGE_MUSIC_LIST](state, info) {
+                state.audioList = info.musicList;
             }
         },
         actions: {
@@ -62,6 +69,9 @@
             },
             [types.CHECK_ONE_FOOTER]({ commit }, info) {
                 commit('checkOneFooter', info);
+            },
+            [types.STORAGE_MUSIC_LIST]({ commit }, info) {
+                commit('storageMusicList', info);
             }
         }
 
