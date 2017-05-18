@@ -1,9 +1,9 @@
 <template lang="html">
-  <header class="header">
-	  <span class="h-btn iconfont icon-wode"></span>
-	  <h3 class="h-title">VCloud</h3>
-	  <span class="h-btn iconfont icon-sousuo p-right"></span>
-  </header>
+    <header class="header">
+        <span class="h-btn iconfont icon-wode"></span>
+        <h3 class="h-title">VCloud</h3>
+        <span class="h-btn iconfont icon-sousuo p-right"></span>
+    </header>
 </template>
 
 <script>

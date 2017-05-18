@@ -1,7 +1,7 @@
 <template lang="html">
-	<div :class="{loading: $store.state.needLoading}">
-      <i class="icon"></i>
-  	</div>
+    <div :class="{loading: $store.state.needLoading}">
+        <i class="icon"></i>
+    </div>
 </template>
 
 <script>

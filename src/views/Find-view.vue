@@ -1,7 +1,7 @@
 <template lang="html">
-	<div class="find-view">
-		这是find-view区
-	</div>
+    <div class="find-view">
+        这是find-view区
+    </div>
 </template>
 <script>
 import store from '../store/store.js';

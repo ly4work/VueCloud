@@ -1,15 +1,11 @@
 <template lang="html">
-  <nav class="nav">
-  	<ul class="tabs">
-		<router-link  class="tab" v-for="(tab, index) of tabs"  :to="tab.routerPath" :key="index">
-			<span 
-            class="tab-link blk"
-            :class="{on: index == $store.state.tabIndex}"
-            @click="checkTab(index)"
-			>{{tab.name}}</span>
-		</router-link>
-  	</ul>
-  </nav>
+    <nav class="nav">
+        <ul class="tabs">
+            <router-link class="tab" v-for="(tab, index) of tabs" :to="tab.routerPath" :key="index">
+                <span class="tab-link blk" :class="{on: index == $store.state.tabIndex}" @click="checkTab(index)">{{tab.name}}</span>
+            </router-link>
+        </ul>
+    </nav>
 </template>
 
 <script>
