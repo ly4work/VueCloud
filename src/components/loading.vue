@@ -9,7 +9,7 @@ export default {
     name: 'loading',
     data() {
         return {
-
+            loading: ''
         }
     }
 }
