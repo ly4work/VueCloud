@@ -25,8 +25,3 @@ var vm = new Vue({
     template: '<App/>',
     components: { App },
 });
-// console.log(vm.$data.GLOBAL_TABINDEX)
-// vm.$watch(GLOBAL_TABINDEX, function(v, oldv) {
-//     console.log(v);
-// });
-// console.log("%c Cloud created by nardo.li@2017 ","color:#B72712");

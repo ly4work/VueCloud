@@ -52,6 +52,6 @@ router.beforeEach((to, from, next) => {
         type: 'checkPlayerShow',
         isShowPlayerBar: to.name == 'MusicView' ? true : false
     })
-    next()
+    next();
 })
 export default router;

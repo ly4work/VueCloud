@@ -9,27 +9,13 @@
                         <Nav-bar></Nav-bar>
                     </div>
                 </div>
-    
                 <!-- tab切换router展示内容 -->
                 <router-view></router-view>
             </div>
-    
         </transition>
         <Loading></Loading>
         <Player-bar v-show="this.$store.state.isShowPlayerBar"></Player-bar>
     </div>
-    <transition name="player">
-        <div class="playerBar">
-            <div class="songimg">
-                <video src="" id="player-video" class="player-video"></video>
-                <img src="" alt="">
-                <p class="play-name"></p>
-            </div>
-            <div class="player-icon">
-                <img src="" alt="">
-            </div>
-        </div>
-    </transition>
 </template>
 
 <script>
@@ -84,5 +70,4 @@ export default {
         }
     }
 }
-
 </style>

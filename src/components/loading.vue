@@ -6,12 +6,12 @@
 
 <script>
 export default {
-	name: 'loading',
-	data(){
-		return {
+    name: 'loading',
+    data() {
+        return {
 
-		}
-	}
+        }
+    }
 }
 </script>
 
@@ -24,12 +24,12 @@ export default {
     top: 50%;
     transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-	.icon {
-		display: inline-block;
-		width: 2.5rem;
-		height: 2.5rem;
-		background: url('../assets/ripple.gif');
-		background-size: 2.5rem;
-	}
+    .icon {
+        display: inline-block;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: url('../assets/ripple.gif');
+        background-size: 2.5rem;
+    }
 }
 </style>
