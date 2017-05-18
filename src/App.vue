@@ -1,22 +1,35 @@
 <template>
-  <div id="app">
-    <!-- app主界面 -->
-    <transition name="main">
-        <div class="page">
-            <div class="header-box">
-                <div class="header-fixed">
-                    <Header-bar></Header-bar>
-                    <Nav-bar></Nav-bar>
+    <div id="app">
+        <!-- app主界面 -->
+        <transition name="main">
+            <div class="page">
+                <div class="header-box">
+                    <div class="header-fixed">
+                        <Header-bar></Header-bar>
+                        <Nav-bar></Nav-bar>
+                    </div>
                 </div>
+    
+                <!-- tab切换router展示内容 -->
+                <router-view></router-view>
             </div>
-
-            <!-- tab切换router展示内容 -->
-            <router-view></router-view>
+    
+        </transition>
+        <Loading></Loading>
+        <Player-bar v-show="this.$store.state.isShowPlayerBar"></Player-bar>
+    </div>
+    <transition name="player">
+        <div class="playerBar">
+            <div class="songimg">
+                <video src="" id="player-video" class="player-video"></video>
+                <img src="" alt="">
+                <p class="play-name"></p>
+            </div>
+            <div class="player-icon">
+                <img src="" alt="">
+            </div>
         </div>
-
     </transition>
-    <Loading></Loading>
-  </div>
 </template>
 
 <script>
@@ -27,26 +40,28 @@ import MusicView from './views/Music-view.vue';
 import FindView from './views/Find-view.vue';
 import OneView from './views/One-view.vue';
 import Loading from './components/loading.vue';
+import PlayerBar from './components//Player-bar';
 export default {
-  name: 'app',
-  components: {
-      HeaderBar,
-      NavBar,
-      MusicView,
-      FindView,
-      OneView,
-      Loading,
-  },
-  data(){
-    return {
-        data: store.state.checkTabLink
-    }
-  },
-  methods: {
+    name: 'app',
+    components: {
+        HeaderBar,
+        NavBar,
+        MusicView,
+        FindView,
+        OneView,
+        Loading,
+        PlayerBar
+    },
+    data() {
+        return {
+            data: store.state.checkTabLink
+        }
+    },
+    methods: {
 
-  },
-  mounted(){
-  }
+    },
+    mounted() {
+    }
 }
 </script>
 
@@ -65,8 +80,7 @@ export default {
         z-index: 9999;
         .header-fixed {
             position: fixed;
-            width: 100%;
-            // height: 7.8rem;
+            width: 100%; // height: 7.8rem;
         }
     }
 }

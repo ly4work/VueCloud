@@ -15,15 +15,14 @@
               :src="song.imgUrl" 
               :alt="song.csong" 
               :title="song.csong"
-              
               />
             <span 
               class="singer"
             >{{(+index+1) + '. ' + song.csinger + '-' + song.csong}}
             </span>
-            <span class="delete-btn">
-
-            </span>
+            <div class="player-gif" v-show="index == 1"> 
+              <img class="playing" src="../assets/loading.gif">
+            </div>
           </li>
 				</ul>
         <div class="">
@@ -123,9 +122,9 @@ export default {
       if (dbMusic.indexOf((this.myMusicList[index].docid + '')) > -1) {
         this.myMusicList[index].singerid = -1;
         let len = this.localStor('musiclist').length;
-        for(let i = 0; i < len; i++){
+        for (let i = 0; i < len; i++) {
           //匹配成功，喜欢 -> 不喜欢， 删除当前点击声音在本地库中的数据
-          if(this.localStor('musiclist')[i].docid != this.myMusicList[index].docid){
+          if (this.localStor('musiclist')[i].docid != this.myMusicList[index].docid) {
             newStoreList.push(this.localStor('musiclist')[i]);
           }
         }
@@ -172,33 +171,46 @@ export default {
       width: 100%;
       .song-item {
         width: 100%;
-        height: 6rem;
+        height: 5.4rem;
         vertical-align: middle;
         position: relative;
         border-bottom: 0.5px solid #ddd;
         display: flex;
         .iconfont.c-love {
           width: 3rem;
-          padding: 1.5rem 0.3rem;
+          padding: 1.2rem 0.3rem;
           text-align: center;
           @include font-lh-col(1.8rem, 3rem, 3rem, #e85e5e);
           transition: 0.5s ease-in-out;
-          opacity: 1;
         }
         .song-img {
           width: 3.8rem;
           height: 3.8rem;
-          margin: 1.1rem 1.5rem 0 0.5rem;
+          margin: 0.8rem 1.5rem 0 0.5rem;
           @include br(0.3rem);
         }
         .singer {
-          @include font-lh-col(1.4rem, 6rem, 6rem, #333); // flex: 6;
+          @include font-lh-col(1.4rem, 5.4rem, 5.4rem, #333); // flex: 6;
           display: inline-block;
-          width: 16rem;
+          width: 14rem;
           font-family: '宋体';
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
+        }
+        .player-gif {
+          width: 2.6rem;
+          height: 2.6rem;
+          margin: 1.4rem 0 0 1rem;
+          position: absolute;
+          right: 1rem;
+          top: 0;
+          .playing {
+            display: block;
+            text-align: center;
+            @include font-lh-col(1.3rem, 2.6rem, 2.6rem, #666);
+            transition: 0.5s ease-in-out;
+          }
         }
       }
     }

@@ -78,5 +78,50 @@
         "imgUrl": "http://imgcache.qq.com/music/photo/album_300/2/300_albumpic_2016402_0.jpg",
         "audioUrl": "http://ws.stream.qqmusic.qq.com/201944252.m4a?fromtag=46",
         "singerid": "1234562"
+    },
+    {
+        "csinger": "周杰伦",
+        "csong": "白色风车",
+        "pubtime": 1157040000,
+        "docid": 10081531360283469215,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/4/300_albumpic_13004_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/102320103.m4a?fromtag=46",
+        "singerid": "123456"
+    },
+    {
+        "csinger": "周杰伦",
+        "csong": "一路向北",
+        "pubtime": 1119542400,
+        "docid": 7898300423480694200,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/11/300_albumpic_14311_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/5105986.m4a?fromtag=46",
+        "singerid": "123456"
+    },
+    {
+        "csinger": "周杰伦",
+        "csong": "听妈妈的话",
+        "pubtime": 1284393600,
+        "docid": 15480998147651378719,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/4/300_albumpic_13004_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/102066257.m4a?fromtag=46",
+        "singerid": "123456"
+    },
+    {
+        "csinger": "周杰伦",
+        "csong": "彩虹",
+        "pubtime": 1358697600,
+        "docid": 5804346225169701313,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/21/300_albumpic_33021_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/102340966.m4a?fromtag=46",
+        "singerid": "123456"
+    },
+    {
+        "csinger": "周杰伦",
+        "csong": "明明就",
+        "pubtime": 1448899200,
+        "docid": 8915908086982865215,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/21/300_albumpic_194021_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/3585884.m4a?fromtag=46",
+        "singerid": "123456"
     }
 ]

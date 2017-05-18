@@ -18,7 +18,11 @@
             isClickChecking: false,
             audioList: [
 
-            ]
+            ],
+            playList: [
+
+            ],
+            isShowPlayerBar: true
         },
         mutations: {
             //检查是否为点击tab更换路由
@@ -58,6 +62,10 @@
             //将本地播放列表存储在store中
             [types.STORAGE_MUSIC_LIST](state, info) {
                 state.audioList = info.musicList;
+            },
+            //切换播放条显示
+            [types.CHECK_PLAYER_SHOW](state, info) {
+                state.isShowPlayerBar = info.isShowPlayerBar;
             }
         },
         actions: {

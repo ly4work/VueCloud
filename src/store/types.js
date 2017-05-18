@@ -7,7 +7,8 @@ const types = {
     STORAGE_ONE_INFO: 'storageOneInfo',
     STORAGE_ONE_PAGE: 'storageOnePage',
     CHECK_ONE_FOOTER: 'checkOneFooter',
-    STORAGE_MUSIC_LIST: 'storageMusicList'
+    STORAGE_MUSIC_LIST: 'storageMusicList',
+    CHECK_PLAYER_SHOW: 'checkPlayerShow'
 }
 
 export default types;
