@@ -8,7 +8,9 @@ const types = {
     STORAGE_ONE_PAGE: 'storageOnePage',
     CHECK_ONE_FOOTER: 'checkOneFooter',
     STORAGE_MUSIC_LIST: 'storageMusicList',
-    CHECK_PLAYER_SHOW: 'checkPlayerShow'
+    CHECK_PLAYER_SHOW: 'checkPlayerShow',
+    NOW_PLAYER_VIDEO: 'nowPlayerVideo',
+    CHECK_PLAYING_STATE: 'checkPlayingState'
 }
 
 export default types;

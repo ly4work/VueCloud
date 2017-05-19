@@ -14,7 +14,7 @@
                 <p class="psg-author" v-show="canShow">{{viewInfo.wordsInfo}}</p>
             </div>
             <transition name="footerBar">
-                <footer class="footer" v-show="this.$store.state.isFooterShow">
+                <footer class="footer" v-show="$store.state.isFooterShow">
                     <div class="fixed-box">
                         <div class="btn prev-btn" :key="prev" @click="checkPage('prev')">
                             上一个

@@ -22,7 +22,20 @@ const store = new Vuex.Store({
         playList: [
 
         ],
-        isShowPlayerBar: true
+        isShowPlayerBar: true,
+        nowPlayer: {
+            audioUrl: '',
+            csinger: '',
+            csong: '',
+            docid: '',
+            imgUrl: '',
+            pubtime: ''
+        },
+        gifStateImg: [
+            'src/assets/loading.gif',
+            '../src/assets/pause.png'
+        ],
+        isPlaying: false
     },
     mutations: {
         //检查是否为点击tab更换路由
@@ -66,6 +79,14 @@ const store = new Vuex.Store({
         //切换播放条显示
         [types.CHECK_PLAYER_SHOW](state, info) {
             state.isShowPlayerBar = info.isShowPlayerBar;
+        },
+        //更新当前播放声音信息
+        [types.NOW_PLAYER_VIDEO](state, info) {
+            state.nowPlayer = info.nowPlayer;
+        },
+        //切换播放state
+        [types.CHECK_PLAYING_STATE](state, info) {
+            state.isPlaying = info.isPlaying;
         }
     },
     actions: {
@@ -80,6 +101,9 @@ const store = new Vuex.Store({
         },
         [types.STORAGE_MUSIC_LIST]({ commit }, info) {
             commit('storageMusicList', info);
+        },
+        [types.NOW_PLAYER_VIDEO]({ commit }, info) {
+            commit('nowPlayerVideo', info);
         }
     }
 

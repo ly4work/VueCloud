@@ -3,18 +3,19 @@
         <section class="music-view">
             <div class="my-music">
                 <ul class="music-list">
-                    <li class="song-item" v-for="(song, index) of myMusicList" :id="song.docid">
-                        <span class="iconfont c-love" @click="toggleLike(index)" :title="song.singerid" :class="song.singerid != -1 ? 'icon-like' : 'icon-hate'"></span>
+                    <li class="song-item" v-for="(song, index) of myMusicList" :id="song.docid" @click.stop="toPlay(song)">
+                        <span class="iconfont c-love" @click.stop="toggleLike(index)" :title="song.singerid" :class="song.singerid != -1 ? 'icon-like' : 'icon-hate'"></span>
                         <img class="song-img" :src="song.imgUrl" :alt="song.csong" :title="song.csong" />
                         <span class="singer">{{(+index+1) + '. ' + song.csinger + '-' + song.csong}}
                         </span>
-                        <div class="player-gif" v-show="index == 1">
-                            <img class="playing" src="../assets/loading.gif">
+                        <div class="player-gif" v-show="song.docid == player.docid">
+                            <img class="playing" :src="$store.state.isPlaying ? checkVideoGif(0) : checkVideoGif(1)">
                         </div>
                     </li>
                 </ul>
                 <div class="">
-                    <p></p>
+
+                    <p>没有更多啦~</p>
                 </div>
             </div>
         </section>
@@ -22,6 +23,7 @@
 </template>
 
 <script>
+// import store from '../store/store';
 export default {
     name: 'Music',
     data() {
@@ -41,7 +43,24 @@ export default {
             loadTxt: [
                 '没有更多了~',
                 '下拉加载更多'
-            ]
+            ],
+            player: {
+                audioUrl: '',
+                csinger: '',
+                csong: '',
+                docid: '',
+                imgUrl: '',
+                pubtime: ''
+            },
+            gifStateImg: [
+                {
+                    src: require('../assets/loading.gif'),
+                },
+                {
+                    src: require('../assets/loading-pause.png')
+                }
+            ],
+            isPlaying: this.$store.state.isPlaying
         }
     },
     beforeCreate() {
@@ -70,6 +89,16 @@ export default {
                     console.log(err);
                 })
         }
+        //调取上一次的播放记录
+        if (this.localStor('lastSong')) {
+            this.player = this.localStor('lastSong');
+        } else {
+            this.player = {};
+        }
+        this.$store.dispatch({
+            type: 'nowPlayerVideo',
+            nowPlayer: this.player
+        })
     },
     mounted() {
         //当前视图渲染过一次后记住当前tab索引，刷新时显示该路由
@@ -127,6 +156,31 @@ export default {
                 'type': 'storageMusicList',
                 'musicList': newStoreList
             })
+        },
+        //播放声音时的动态gif图状态
+        checkVideoGif(i) {
+            return this.gifStateImg[i].src;
+        },
+        //点击声音播放
+        toPlay(opts) {
+            //点击同一条
+            if (opts.docid == this.player.docid) {
+                this.isPlaying = !this.isPlaying;
+            }
+            //切换声音
+            else {
+                this.player = opts;
+                this.$store.dispatch({
+                    type: 'nowPlayerVideo',
+                    nowPlayer: this.player
+                })
+                this.isPlaying = true;
+                this.localStor('lastSong', this.player);
+            }
+            this.$store.commit({
+                type: 'checkPlayingState',
+                isPlaying: this.isPlaying
+            })
         }
     },
 
@@ -152,6 +206,7 @@ export default {
 
 .music-view {
     width: 100%;
+    margin-bottom: 80px;
     .my-music {
         .music-list {
             width: 100%;
