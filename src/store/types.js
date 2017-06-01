@@ -11,7 +11,9 @@ const types = {
     CHECK_PLAYER_SHOW: 'checkPlayerShow',
     NOW_PLAYER_VIDEO: 'nowPlayerVideo',
     CHECK_PLAYING_STATE: 'checkPlayingState',
-    PLAYER_ACTION: 'playerAction'
+    PLAYER_ACTION: 'playerAction',
+    CHECK_NEXT_INDEX: 'checkNextIndex',
+    SET_TEMP_LIST: 'setTempList'
 }
 
 export default types;

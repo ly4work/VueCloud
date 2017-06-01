@@ -50,7 +50,7 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
     store.commit({
         type: 'checkPlayerShow',
-        isShowPlayerBar: to.name == 'MusicView' ? true : false
+        isShowPlayerBar: to.name === 'MusicView' ? true : false
     })
     store.commit({
         type: 'checkTabLink',

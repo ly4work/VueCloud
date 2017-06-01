@@ -3,12 +3,12 @@
         <section class="music-view">
             <div class="my-music">
                 <ul class="music-list">
-                    <li class="song-item" v-for="(song, index) of myMusicList" :id="song.docid" @click.stop="toPlay(song)">
+                    <li class="song-item" v-for="(song, index) of myMusicList" :id="song.docid" @click.stop="toPlay(song)" :data-index="index">
                         <span class="iconfont c-love" @click.stop="toggleLike(index)" :title="song.singerid" :class="song.singerid != -1 ? 'icon-like' : 'icon-hate'"></span>
                         <img class="song-img" :src="song.imgUrl" :alt="song.csong" :title="song.csong" />
                         <span class="singer">{{(+index+1) + '. ' + song.csinger + '-' + song.csong}}
                         </span>
-                        <div class="player-gif" v-show="song.docid == player.docid">
+                        <div class="player-gif" v-show="song.docid === $store.state.nowPlayer.docid">
                             <img class="playing" :src="$store.state.isPlaying ? checkVideoGif(0) : checkVideoGif(1)">
                         </div>
                     </li>
@@ -79,27 +79,32 @@ export default {
                     if (res.data.ret == 0) {
                         this.myMusicList = res.data.musicList;
                         this.localStor('musiclist', this.myMusicList);
-                        this.$store.commit({
-                            'type': 'storageMusicList',
-                            'musicList': this.myMusicList
-                        })
                     }
                 }).catch(err => {
                     console.log(err);
                 })
         }
+        this.$store.commit({
+            type: 'storageMusicList',
+            musicList: this.myMusicList
+        })
+        //直到下次渲染前，都不改变当前的myMusicList列表和临时列表tempList,只改变store
+        this.$store.commit({
+            type: 'setTempList',
+            list: this.myMusicList
+        })
         //调取上一次的播放记录
         if (this.localStor('lastSong')) {
             this.player = this.localStor('lastSong');
         } else {
             this.player = {
-                audioUrl:"http://ws.stream.qqmusic.qq.com/403778.m4a?fromtag=46",
-                csinger: "周杰伦", 
-                csong: "不能说的秘密", 
-                docid: 1749067899870812400, 
-                imgUrl:"http://imgcache.qq.com/music/photo/album_300/11/300_albumpic_32611_0.jpg",
-                pubtime:1194883200,
-                singerid:"123456"
+                audioUrl: "http://ws.stream.qqmusic.qq.com/403778.m4a?fromtag=46",
+                csinger: "周杰伦",
+                csong: "不能说的秘密",
+                docid: 1749067899870812400,
+                imgUrl: "http://imgcache.qq.com/music/photo/album_300/11/300_albumpic_32611_0.jpg",
+                pubtime: 1194883200,
+                singerid: "123456"
             };
         }
         this.$store.dispatch({
@@ -187,11 +192,11 @@ export default {
             this.$store.dispatch({
                 type: 'checkPlayingState',
                 isPlaying: this.isPlaying,
+                isNext: opts.docid != this.player.docid ? false : true,
                 videoBox: document.querySelector('#player-video')
             })
         }
-    },
-
+    }
 }
 </script>
 

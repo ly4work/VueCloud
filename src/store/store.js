@@ -24,7 +24,7 @@ const store = new Vuex.Store({
         audioList: [
 
         ],
-        playList: [
+        tempList: [
 
         ],
         isShowPlayerBar: true,
@@ -34,18 +34,23 @@ const store = new Vuex.Store({
             csong: '',
             docid: '',
             imgUrl: '',
-            pubtime: ''
+            pubtime: '',
+            singerid: ''
         },
-        gifStateImg: [
-            'src/assets/loading.gif',
-            '../src/assets/pause.png'
-        ],
         isPlaying: false
     },
     mutations: {
         //检查是否为点击tab更换路由
         [types.IS_CLICK_CHECKING](state, info) {
             state.isClickChecking = info.isClickChecking
+        },
+        //更换全局下一首歌曲在播放列表中的index
+        [types.CHECK_NEXT_INDEX](state, info) {
+            state.next_song_index = info.index;
+        },
+        //重新渲染我的音乐页前的临时列表
+        [types.SET_TEMP_LIST](state, info) {
+            state.tempList = info.list;
         },
         [types.SET_COPY_RIGHT](state) {
             console.log(state.copyright);
@@ -93,10 +98,18 @@ const store = new Vuex.Store({
         [types.CHECK_PLAYING_STATE](state, info) {
             state.isPlaying = info.isPlaying;
             let isToPlay = state.isPlaying ? 'play' : 'pause'
-                //play pause是同步过程，所以需要放入事件队列
-            setTimeout(() => {
-                info.videoBox[isToPlay]()
-            }, 0)
+                //  play pause是同步过程，所以需要放入事件队列
+                //  如果不是由上一个下一个按钮切换而来，则直接判断播放状态
+            if (!info.isNext) {
+                setTimeout(() => {
+                    info.videoBox[isToPlay]()
+                }, 0)
+            } else {
+                //  如果是由按钮切换而来，则待重新加载完资源后直接播放
+                info.videoBox.oncanplay = function() {
+                    info.videoBox.play()
+                }
+            }
         }
     },
     actions: {
