@@ -26,6 +26,7 @@
                     type: 'checkPlayingState',
                     isPlaying: !this.$store.state.isPlaying
                 })
+                console.log(this.$store.state.isPlaying)
             }
         }
     }

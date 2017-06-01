@@ -56,7 +56,7 @@ export default {
                     src: require('../assets/loading.gif'),
                 },
                 {
-                    src: require('../assets/loading-pause.png')
+                    src: require('../assets/loading-pause2.jpg')
                 }
             ],
             isPlaying: this.$store.state.isPlaying
@@ -116,10 +116,6 @@ export default {
                 index: 0
             })
         }
-        // this.$store.dispatch({
-        //     type: 'nowPlayerVideo',
-        //     nowPlayer: this.localStor('lastSong')
-        // })
         this.$store.commit({
             type: 'checkLoading',
             need: false
@@ -260,6 +256,7 @@ export default {
                     .playing {
                         display: block;
                         text-align: center;
+                        width: 100%;
                         @include font-lh-col(1.3rem, 2.6rem, 2.6rem, #666);
                         transition: 0.5s ease-in-out;
                     }
