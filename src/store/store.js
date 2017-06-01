@@ -92,6 +92,11 @@ const store = new Vuex.Store({
         //切换播放state
         [types.CHECK_PLAYING_STATE](state, info) {
             state.isPlaying = info.isPlaying;
+            let isToPlay = state.isPlaying ? 'play' : 'pause'
+                //play pause是同步过程，所以需要放入事件队列
+            setTimeout(() => {
+                info.videoBox[isToPlay]()
+            }, 0)
         }
     },
     actions: {
@@ -109,6 +114,9 @@ const store = new Vuex.Store({
         },
         [types.NOW_PLAYER_VIDEO]({ commit }, info) {
             commit('nowPlayerVideo', info);
+        },
+        [types.CHECK_PLAYING_STATE]({ commit }, info) {
+            commit('checkPlayingState', info)
         }
     }
 

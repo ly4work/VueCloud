@@ -10,7 +10,8 @@ const types = {
     STORAGE_MUSIC_LIST: 'storageMusicList',
     CHECK_PLAYER_SHOW: 'checkPlayerShow',
     NOW_PLAYER_VIDEO: 'nowPlayerVideo',
-    CHECK_PLAYING_STATE: 'checkPlayingState'
+    CHECK_PLAYING_STATE: 'checkPlayingState',
+    PLAYER_ACTION: 'playerAction'
 }
 
 export default types;

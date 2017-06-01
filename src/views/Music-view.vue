@@ -184,9 +184,10 @@ export default {
                 this.isPlaying = true;
                 this.localStor('lastSong', this.player);
             }
-            this.$store.commit({
+            this.$store.dispatch({
                 type: 'checkPlayingState',
-                isPlaying: this.isPlaying
+                isPlaying: this.isPlaying,
+                videoBox: document.querySelector('#player-video')
             })
         }
     },

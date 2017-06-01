@@ -2,7 +2,7 @@
     <transition name="player">
         <div class="playerBar">
             <div class="songinfo">
-                <video :src="$store.state.nowPlayer.audioUrl" id="player-video" class="player-video"></video>
+                <video :src="$store.state.nowPlayer.audioUrl" id="player-video" class="player-video" webkit-playsinline="true" playsinline="true"></video>
                 <img :src="$store.state.nowPlayer.imgUrl" alt="" class="songphoto" :class="$store.state.isPlaying ? 'rotate' : ''">
             </div>
             <p class="play-name">{{$store.state.nowPlayer.csinger + ' - ' + $store.state.nowPlayer.csong}}</p>
@@ -13,23 +13,23 @@
     </transition>
 </template>
 <script>
-    export default {
-        name: 'Player-bar',
-        data(){
-            return {
+export default {
+    name: 'Player-bar',
+    data() {
+        return {
 
-            }
-        },
-        methods: {
-            checkPlayState(){
-                this.$store.commit({
-                    type: 'checkPlayingState',
-                    isPlaying: !this.$store.state.isPlaying
-                })
-                console.log(this.$store.state.isPlaying)
-            }
+        }
+    },
+    methods: {
+        checkPlayState() {
+            this.$store.commit({
+                type: 'checkPlayingState',
+                isPlaying: !this.$store.state.isPlaying,
+                videoBox: document.querySelector('#player-video')
+            })
         }
     }
+}
 </script>
 <style lang="scss">
 @import '../style/base/common';
