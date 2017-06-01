@@ -11,6 +11,11 @@ const store = new Vuex.Store({
     state: {
         copyright: 'Cloud created by nardo.li@2017 ',
         tabIndex: 0,
+        tabsRouter: [
+            'MusicView',
+            'FindView',
+            'OneView'
+        ],
         needLoading: false,
         oneViewInfo: {},
         onePage: 0,

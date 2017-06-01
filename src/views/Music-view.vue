@@ -92,7 +92,15 @@ export default {
         if (this.localStor('lastSong')) {
             this.player = this.localStor('lastSong');
         } else {
-            this.player = {};
+            this.player = {
+                audioUrl:"http://ws.stream.qqmusic.qq.com/403778.m4a?fromtag=46",
+                csinger: "周杰伦", 
+                csong: "不能说的秘密", 
+                docid: 1749067899870812400, 
+                imgUrl:"http://imgcache.qq.com/music/photo/album_300/11/300_albumpic_32611_0.jpg",
+                pubtime:1194883200,
+                singerid:"123456"
+            };
         }
         this.$store.dispatch({
             type: 'nowPlayerVideo',
@@ -108,6 +116,10 @@ export default {
                 index: 0
             })
         }
+        // this.$store.dispatch({
+        //     type: 'nowPlayerVideo',
+        //     nowPlayer: this.localStor('lastSong')
+        // })
         this.$store.commit({
             type: 'checkLoading',
             need: false
