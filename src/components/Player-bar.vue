@@ -8,6 +8,7 @@
             <p class="play-name">{{$store.state.nowPlayer.csinger + ' - ' + $store.state.nowPlayer.csong}}</p>
     
             <div class="play-util">
+                <span class="play-mode iconfont icon-randomplay"></span>
                 <span class="prev btn iconfont icon-prev" @click="checkSong($store.state.nowPlayer, 'prev')">
                 </span>
                 <span class="iconfont btn-player" @click="checkPlayState" :class="$store.state.isPlaying ? 'icon-pause' : 'icon-play'"></span>
@@ -149,6 +150,12 @@ export default {
         height: 6rem;
         right: 1rem;
         text-align: center;
+        .play-mode {
+            position: absolute; // width: 5rem;
+            left: -4rem;
+            top: 0;
+            @include font-lh-col(2rem, 6rem, 5.6rem, $skin-red)
+        }
         .btn {
             display: block;
             position: absolute;

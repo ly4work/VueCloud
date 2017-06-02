@@ -71,7 +71,7 @@ export default {
     },
     created() {
         //调取我的播放列表
-        if (this.localStor('musiclist')) {
+        if (this.localStor('musiclist').length > 0) {
             this.myMusicList = this.localStor('musiclist');
         } else {
             this.axios.get('/api/music-list')
@@ -246,7 +246,7 @@ export default {
                 .singer {
                     @include font-lh-col(1.4rem, 5.4rem, 5.4rem, #333); // flex: 6;
                     display: inline-block;
-                    width: 14rem;
+                    width: 18rem;
                     font-family: '宋体';
                     overflow: hidden;
                     text-overflow: ellipsis;
