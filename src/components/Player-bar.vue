@@ -8,14 +8,10 @@
             <p class="play-name">{{$store.state.nowPlayer.csinger + ' - ' + $store.state.nowPlayer.csong}}</p>
     
             <div class="play-util">
-                <span class="prev btn" @click="checkSong($store.state.nowPlayer, 'prev')">
-                    <img class="img-prev" :src="nextImg" alt="">
+                <span class="prev btn iconfont icon-prev" @click="checkSong($store.state.nowPlayer, 'prev')">
                 </span>
-                <div class="player-icon" @click="checkPlayState">
-                    <span class="iconfont btn-player" :class="$store.state.isPlaying ? 'icon-pause' : 'icon-play'"></span>
-                </div>
-                <span class="next btn" @click="checkSong($store.state.nowPlayer, 'next')">
-                    <img class="img-next" :src="prevImg" alt="">
+                <span class="iconfont btn-player" @click="checkPlayState" :class="$store.state.isPlaying ? 'icon-pause' : 'icon-play'"></span>
+                <span class="next btn iconfont icon-next" @click="checkSong($store.state.nowPlayer, 'next')">
                 </span>
             </div>
         </div>
@@ -26,8 +22,8 @@ export default {
     name: 'Player-bar',
     data() {
         return {
-            nextImg: require('../assets/prev.png'),
-            prevImg: require('../assets/next.png')
+            // nextImg: require('../assets/prev.png'),
+            // prevImg: require('../assets/next.png')
         }
     },
     mounted() {
@@ -35,9 +31,8 @@ export default {
         let aud = document.querySelector('#player-video');
         //播放完后自动播放下一首
         aud.addEventListener('ended', function () {
-            document.querySelector('#player-video').stop();
             //播放结束后拿当前播放的声音去比对store中的 tempList获取index
-            _self.next(_self.$store.state.nowPlayer)
+            _self.checkSong(_self.$store.state.nowPlayer, 'next')
         })
     },
     methods: {
@@ -78,9 +73,9 @@ export default {
                     curIndex = -1;
                 }
                 ++curIndex;
-            } else{
+            } else {
                 //到第一首
-                if(curIndex === 0){
+                if (curIndex === 0) {
                     curIndex = _tempListLen;
                 }
                 --curIndex;
@@ -140,68 +135,37 @@ export default {
         }
     }
     .play-name {
-        height: 6rem;
-        line-height: 6rem;
-        font-size: 1.2rem;
         margin-left: 0.6rem;
         width: 10rem;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
+        @include font-lh-col(1.2rem, 6rem, 6rem, #333)
     }
 
     .play-util {
-        position: absolute; // top: 1rem;
-        width: 9rem;
+        position: absolute;
+        width: 10rem;
         height: 6rem;
         right: 1rem;
+        text-align: center;
         .btn {
             display: block;
             position: absolute;
             top: 0;
-            width: 1.5rem;
-            overflow: hidden;
-            height: 6rem;
-            img {
-                display: block;
-                position: absolute;
-                height: 3rem;
-                width: 3rem;
-            }
+            @include font-lh-col(3.0rem, 6rem, 6rem, $skin-red)
         }
         .prev {
-            padding: 1.5rem 0;
             left: 0;
-            .img-prev {
-                left: 0;
-            }
         }
         .next {
-            padding: 1.4rem 0;
             right: 0;
-            .img-next {
-                right: 0;
-            }
+            line-height: 5.9rem;
         }
-        .player-icon {
-            position: absolute;
-            width: 3.8rem;
-            height: 3.8rem;
-            left: 50%;
-            margin-left: -1.9rem;
-            top: 1.1rem;
-            border-radius: 5rem;
-            border: 2px solid $skin-red;
-            .btn-player {
-                margin: -1px 0 0 -1px;
-                display: block;
-                width: 3.8rem;
-                height: 3.8rem;
-                line-height: 3.8rem;
-                font-size: 1.6rem;
-                color: $skin-red;
-                text-align: center;
-            }
+        .btn-player {
+            display: inline-block;
+            width: 30%;
+            @include font-lh-col(3.0rem, 6rem, 6rem, $skin-red)
         }
     }
 }

@@ -98,17 +98,16 @@ const store = new Vuex.Store({
         [types.CHECK_PLAYING_STATE](state, info) {
             state.isPlaying = info.isPlaying;
             let isToPlay = state.isPlaying ? 'play' : 'pause'
-                //  play pause是同步过程，所以需要放入事件队列
-                //  如果不是由上一个下一个按钮切换而来，则直接判断播放状态
-            if (!info.isNext) {
-                setTimeout(() => {
-                    info.videoBox[isToPlay]()
-                }, 0)
-            } else {
-                //  如果是由按钮切换而来，则待重新加载完资源后直接播放
+                //  如果是切换歌曲，则待歌曲加载完后直接播放
+            if (info.isNext) {
                 info.videoBox.oncanplay = function() {
                     info.videoBox.play()
                 }
+            } else {
+                //  如果是切换同一首歌的状态，则将play, pause加入事件队列
+                setTimeout(() => {
+                    info.videoBox[isToPlay]()
+                }, 0)
             }
         }
     },

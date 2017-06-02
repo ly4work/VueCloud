@@ -192,7 +192,7 @@ export default {
             this.$store.dispatch({
                 type: 'checkPlayingState',
                 isPlaying: this.isPlaying,
-                isNext: opts.docid != this.player.docid ? false : true,
+                isNext: opts.docid === this.player.docid ? false : true,
                 videoBox: document.querySelector('#player-video')
             })
         }

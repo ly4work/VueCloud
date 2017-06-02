@@ -1,8 +1,8 @@
 <template lang="html">
     <header class="header">
-        <span class="h-btn iconfont icon-wode"></span>
+        <span class="h-btn iconfont icon-account"></span>
         <h3 class="h-title">VCloud</h3>
-        <span class="h-btn iconfont icon-sousuo p-right"></span>
+        <span class="h-btn iconfont icon-shezhi p-right"></span>
     </header>
 </template>
 

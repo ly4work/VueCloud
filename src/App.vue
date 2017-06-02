@@ -52,7 +52,8 @@ export default {
 </script>
 
 <style lang="scss">
-@import './style/font-cloud/iconfont.css';
+@import './style/font-cloud1/iconfont1.css';
+@import './style/font-cloud2/iconfont.css';
 @import './style/base/base.scss';
 @import './style/rem/rem.css';
 @import './style/base/common.scss';

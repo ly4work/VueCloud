@@ -8,6 +8,15 @@
         "singerid": "123456"
     },
     {
+        "csinger": "宮本笑里",
+        "csong": "島唄",
+        "pubtime": 1313510400,
+        "docid": 14251298208796993938,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/40/300_albumpic_191040_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/2449061.m4a?fromtag=46",
+        "singerid": "12341231561"
+    },
+    {
         "csinger": "周杰伦",
         "csong": "七里香",
         "pubtime": 1125417600,
@@ -17,6 +26,24 @@
         "singerid": "123456"
     },
     {
+        "csinger": "Justin Timberlake/Carey Mulligan",
+        "csong": "Five Hundred Miles",
+        "pubtime": 1383235200,
+        "docid": 17513686752752373071,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/13/300_albumpic_1057413_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/103061880.m4a?fromtag=46",
+        "singerid": "1234561231"
+    },
+    {
+        "csinger": "Cat Stevens",
+        "csong": "Father And Son",
+        "pubtime": 1127750400,
+        "docid": 635584744604293461,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/15/300_albumpic_45815_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/548692.m4a?fromtag=46",
+        "singerid": "12345622"
+    },
+    {
         "csinger": "周杰伦",
         "csong": "简单爱",
         "pubtime": 1361462400,
@@ -24,6 +51,15 @@
         "imgUrl": "http://imgcache.qq.com/music/photo/album_300/17/300_albumpic_8217_0.jpg",
         "audioUrl": "http://ws.stream.qqmusic.qq.com/97744.m4a?fromtag=46",
         "singerid": "123456"
+    },
+    {
+        "csinger": "Redbone",
+        "csong": "Come And Get Your Love",
+        "pubtime": 1410796800,
+        "docid": 10289097497658598983,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/95/300_albumpic_647895_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/7105587.m4a?fromtag=46",
+        "singerid": "1234512361"
     },
     {
         "csinger": "周杰伦",

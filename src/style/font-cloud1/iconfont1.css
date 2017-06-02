@@ -10,7 +10,7 @@
 }
 
 .iconfont {
-    font-family: "iconfont" !important;
+    font-family: "iconfont1" !important;
     font-size: 16px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -37,13 +37,15 @@
     content: "\e879";
 }
 
-.icon-pause:before {
-    content: "\e87a";
-}
 
-.icon-play:before {
+/*.icon-pause:before {
+    content: "\e87a";
+}*/
+
+
+/*.icon-play:before {
     content: "\e87c";
-}
+}*/
 
 .icon-zhekou:before {
     content: "\e881";
