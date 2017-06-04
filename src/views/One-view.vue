@@ -19,7 +19,7 @@
                         <div class="btn prev-btn" :key="prev" @click="checkPage('prev')">
                             上一个
                         </div>
-                        <h4 class="footer-one">One</h4>
+                        <h4 class="footer-one">ONE</h4>
                         <div class="btn next-btn" :key="next" @click="checkPage('next')">
                             下一个
                         </div>

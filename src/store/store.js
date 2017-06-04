@@ -37,16 +37,13 @@ const store = new Vuex.Store({
             pubtime: '',
             singerid: ''
         },
-        isPlaying: false
+        isPlaying: false,
+        playMode: ''
     },
     mutations: {
         //检查是否为点击tab更换路由
         [types.IS_CLICK_CHECKING](state, info) {
             state.isClickChecking = info.isClickChecking
-        },
-        //更换全局下一首歌曲在播放列表中的index
-        [types.CHECK_NEXT_INDEX](state, info) {
-            state.next_song_index = info.index;
         },
         //重新渲染我的音乐页前的临时列表
         [types.SET_TEMP_LIST](state, info) {
@@ -54,6 +51,10 @@ const store = new Vuex.Store({
         },
         [types.SET_COPY_RIGHT](state) {
             console.log(state.copyright);
+        },
+        //切换播放模式
+        [types.CHECK_MODE](state, info) {
+            state.playMode = info.mode;
         },
         //切换tab导航
         [types.CHECK_TAB_LINK](state, info) {

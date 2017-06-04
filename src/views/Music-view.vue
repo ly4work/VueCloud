@@ -71,7 +71,7 @@ export default {
     },
     created() {
         //调取我的播放列表
-        if (this.localStor('musiclist').length > 0) {
+        if (this.localStor('musiclist') && this.localStor('musiclist').length > 0) {
             this.myMusicList = this.localStor('musiclist');
         } else {
             this.axios.get('/api/music-list')

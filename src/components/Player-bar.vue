@@ -8,7 +8,7 @@
             <p class="play-name">{{$store.state.nowPlayer.csinger + ' - ' + $store.state.nowPlayer.csong}}</p>
     
             <div class="play-util">
-                <span class="play-mode iconfont icon-randomplay"></span>
+                <span class="play-mode iconfont" :class="playMode === true ? 'icon-orderplay' : 'icon-randomplay'" @click="checkMode"></span>
                 <span class="prev btn iconfont icon-prev" @click="checkSong($store.state.nowPlayer, 'prev')">
                 </span>
                 <span class="iconfont btn-player" @click="checkPlayState" :class="$store.state.isPlaying ? 'icon-pause' : 'icon-play'"></span>
@@ -23,8 +23,16 @@ export default {
     name: 'Player-bar',
     data() {
         return {
-            // nextImg: require('../assets/prev.png'),
-            // prevImg: require('../assets/next.png')
+            playMode: true        //true: order , false: random
+        }
+    },
+    created() {
+        if (this.localStor('playmode') != null) {
+            this.playMode = this.localStor('playmode').localMode;
+        } else if (this.$store.state.playMode) {
+            this.playMode = this.$store.state.playMode;
+        }else {
+            this.playMode = true;
         }
     },
     mounted() {
@@ -96,6 +104,17 @@ export default {
             })
             //通过上一首下一首切换的一定要存储到lastSong local中
             this.localStor('lastSong', nextPlayerSong)
+        },
+        //切换播放模式
+        checkMode() {
+            this.playMode = !this.playMode;
+            this.localStor('playmode', {
+                localMode: this.playMode
+            });
+            this.$store.commit({
+                type: 'checkMode',
+                mode: this.playMode
+            })
         }
     }
 
