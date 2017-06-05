@@ -26,6 +26,15 @@
         "singerid": "123456"
     },
     {
+        "csinger": "多和田えみ",
+        "csong": "ねぇ",
+        "pubtime": 1348588800,
+        "docid": 18371481222143221262,
+        "imgUrl": "http://imgcache.qq.com/music/photo/album_300/90/300_albumpic_426390_0.jpg",
+        "audioUrl": "http://ws.stream.qqmusic.qq.com/2444985.m4a?fromtag=46",
+        "singerid": "123123123456"
+    },
+    {
         "csinger": "Justin Timberlake/Carey Mulligan",
         "csong": "Five Hundred Miles",
         "pubtime": 1383235200,

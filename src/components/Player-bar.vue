@@ -31,7 +31,7 @@ export default {
             this.playMode = this.localStor('playmode').localMode;
         } else if (this.$store.state.playMode) {
             this.playMode = this.$store.state.playMode;
-        }else {
+        } else {
             this.playMode = true;
         }
     },
@@ -63,8 +63,17 @@ export default {
                 throw new Error('arguments invalid.');
             }
         },
+        //设置随机数
+        setRandom(len, cur) {
+            var rdNum = Math.floor(Math.random() * len)
+            if(rdNum == cur){
+                rdNum = Math.floor(Math.random() * len)
+            }
+            return rdNum
+        },
         //下一首
         checkSong(curSong, dir) {
+            var _rdNum;
             let _tempList = this.$store.state.tempList,
                 _tempListLen = _tempList.length,
                 //存放临时播放列表每首歌对应的docid
@@ -75,20 +84,29 @@ export default {
             //匹配当前播放的索引
             let curIndex = _tempIndexArray.indexOf(curSong.docid);
 
-            //下一首
-            if (dir === 'next') {
-                //到最后一首
-                if (curIndex === _tempListLen - 1) {
-                    curIndex = -1;
+            //  顺序播放
+            if (this.playMode === true) {
+                //下一首
+                if (dir === 'next') {
+                    //到最后一首
+                    if (curIndex === _tempListLen - 1) {
+                        curIndex = -1;
+                    }
+                    ++curIndex;
+                } else {
+                    //到第一首
+                    if (curIndex === 0) {
+                        curIndex = _tempListLen;
+                    }
+                    --curIndex;
                 }
-                ++curIndex;
-            } else {
-                //到第一首
-                if (curIndex === 0) {
-                    curIndex = _tempListLen;
-                }
-                --curIndex;
             }
+            //  随机播放
+            else {
+                _rdNum = this.setRandom(_tempListLen, curIndex);
+                curIndex = _rdNum;
+            }
+
 
             //设置下一首的索引
             let nextPlayerSong = this.$store.state.tempList[curIndex];
@@ -178,8 +196,9 @@ export default {
         .btn {
             display: block;
             position: absolute;
-            top: 0;
-            @include font-lh-col(3.0rem, 6rem, 6rem, $skin-red)
+            top: 0; // width: 20%;
+            margin: 0 -0.5rem;
+            @include font-lh-col(2.4rem, 6rem, 6rem, $skin-red)
         }
         .prev {
             left: 0;

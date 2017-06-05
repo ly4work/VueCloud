@@ -38,7 +38,7 @@ const store = new Vuex.Store({
             singerid: ''
         },
         isPlaying: false,
-        playMode: ''
+        playMode: true
     },
     mutations: {
         //检查是否为点击tab更换路由
