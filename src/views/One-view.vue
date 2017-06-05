@@ -9,6 +9,7 @@
                 <div class="photo" v-show="canShow">
                     <img id="img" class="blk" :src="viewInfo.imgUrl" alt="" :title="viewInfo.forward">
                     <p class="photo-author"> {{viewInfo.picInfo}}</p>
+                    <p class="photo-tag"><span class="iconfont icon-zhekou"> 来自 Oracle 星球</span></p>
                 </div>
                 <p class="passage" v-show="canShow">{{viewInfo.forward}}</p>
                 <p class="psg-author" v-show="canShow">{{viewInfo.wordsInfo}}</p>
@@ -225,6 +226,13 @@ export default {
                 width: 100%;
                 @include font-lh-col(3rem, 23rem, 23rem, #333);
                 border: 1px solid #000;
+            }
+            .photo-tag {
+                text-align: left;
+                span {
+                    margin-left: 2rem;
+                    @include font-lh-col(0.8rem, 1.8rem, 1.8rem, #333);
+                }
             }
         }
         .passage {
